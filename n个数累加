@@ -1,0 +1,32 @@
+#include <iostream>
+#include <stdio.h>
+#include <sys/time.h>
+using namespace std;
+int main()
+{
+
+    struct  timeval  start;
+    struct  timeval  end;
+    unsigned long timer;
+    for (int t = 0; t < 10; t++)
+    {
+        gettimeofday(&start, NULL);
+        for (int u = 0; u < 100; u++)
+        {
+            int n = (t + 1) * 10;
+            int sum = 0;
+            int a[1000] = { 0 };
+            for (int i = 0; i < n; i++)
+            {
+                a[i] = 1;
+            }
+            for (int i = 0; i < n; i++)
+                sum += a[i];
+        }
+            gettimeofday(&end, NULL);
+            timer = 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec;
+            cout << timer << endl;
+        
+    }
+    return 0;
+}
